@@ -41,4 +41,33 @@ Find the number of retiring employees by title AND Find the employees eligible f
 
 1. How many roles will need to be filled as the "silver tsunami" begins to make an impact?
 
-2. Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard   employees?
+We can use a query to count the number of emp_no in a table that returns the number of current employees filtered by birth_date and start_date
+![current_employees_retiring_table](https://user-images.githubusercontent.com/84756166/127048464-a7318e7c-894d-4ea6-971b-414589742070.png)
+
+"SELECT COUNT(emp_no)
+FROM current_emp_ret;" 
+ - This piece of sql code is used to return the count 
+
+54,722 roles will need to be filled. This data is based on the current employees who are of retirement age, with duplicate titles removed. 
+
+2. Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+
+SELECT COUNT(emp_no)
+From mentorship_eligibility;
+
+When we do a count of the emp_no in the mentorship_eligibility query the total is 1549. At this rate each mentor would have to take on about 35 mentees in order to train enough employees to fill the current number of positions. This does not take into account any future growth. 
+
+However! Mentorship Eligibility parameters as defined by the challenge only include those born BETWEEN '1965-01-01' AND '1965-12-31'
+
+If we expand the parameters for those who re eligible to be a mentor we may have a different result.
+I expanded the mentor_eligibility query to include current employees born BETWEEN '1960-01-01' AND '1969-12-31'.
+
+When we count the number of employees eligible on the new Mentorship_Capacity table: 
+
+![Mentorship_capacity](https://user-images.githubusercontent.com/84756166/127049895-d8d9204d-0913-4309-8514-1179e75d2668.png)
+
+The new total of available Mentors is 93,756! Now that's a much more manageable cohort.
+
+
+
+
